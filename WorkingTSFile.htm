@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Untitled Page</title>
+</head>
+<body
+<p> <br/>This file is working fine. Change <font color="red">Firefox</font> download location to <font color="red">C:\Users\221032236\Desktop\Mov\Download Stream\TsFiles</font></p>
+<p>Full URL: <font color="red">http://file35.watchers.to/hls/f4c6n3xjqwkrkhrboo77zavszfn6u5zofqjpq3zglwrmk3272w5ljm7yeb4q/seg-1-v1-a1.ts</font></p>
+<p> Url: <input type = "text" id ="tblink" /> eg.http://163.172.40.203/stream/17629-720/play </p>
+<p> EndURL: <input type = "text" id ="tblink2" /> eg.-v1-a1.ts </p>
+<p> Start value: <input type = "text" id ="tbstart" /></p>
+<p> Stop value: <input type = "text" id ="tbstop" /> this should be 1 higher than requirement.</p>
+<br/>
+<button onclick ="myfunc()"> Click</button>
+<p id="demo" ></p>
+<script type="text/javascript">
+    function myfunc() {
+	var counter = document.getElementById("tbstart").value;
+	// counter runs 1 time less than value defined here for stop. So stop 6 will run code 5 times.
+	var stop =document.getElementById("tbstop").value; //6; 
+	var x = setInterval(function(){
+	
+	var startUrl = document.getElementById("tblink").value; //"http://163.172.40.203/stream/17629-720/play";
+	var endUrl = document.getElementById("tblink2").value; //-v1-a1.ts
+	window.open(startUrl + counter + endUrl);
+	//console.log(l + counter + ".ts");
+	//console.log('counter value ' +counter);
+	document.getElementById("demo").innerHTML += startUrl + counter + endUrl + "<br/>";
+	counter ++;
+	if(counter == stop){  
+		clearInterval(x);
+	}
+	
+}, 10000);
+	
+};
+</script>
+</body>
+</html>
