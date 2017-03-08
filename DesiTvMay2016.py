@@ -1,9 +1,12 @@
 from lxml import html
 import requests
 
-desitvbox ='http://www.desitvbox.net/bigg-boss-season-10-26th-january-2017-episode-watch-online/'
+desitvbox ='http://www.desitvbox.net/bhabhiji-ghar-pe-hai-2nd-march-2017-episode-watch-online/'
+#'http://www.desitvbox.net/bhabhiji-ghar-pe-hai-1st-march-2017-episode-watch-online/'
 #'http://www.desitvbox.net/yaaron-ki-baarat-20th-november-2016-episode-watch-online/'
 #'http://www.desitvbox.me/the-kapil-sharma-show-9th-october-2016-episode-watch-online/'
+#'http://www.desitvbox.net/koffee-with-karan-season-5-29th-january-2017-episode-watch-online/'
+#'http://www.desitvbox.net/indian-idol-7-2016-14th-january-2017-episode-watch-online/'
 #parts = 3
 #Totalparts = parts
 pgName = desitvbox[desitvbox.rfind('/',0,-1)+1:-15]
@@ -38,7 +41,13 @@ for p in range(add,num -1,-1):
 	for element in t.xpath("//iframe"):
 		href = element.items()[3][1]
 		if href.startswith('http'):
-			finallinks.append(href[href.find('=')+1:])
+			if 'embed' in href:
+				st = href.rfind('/')
+				en = href.find('?')
+				val = href[st+1:en]
+				finallinks.append(val)
+			else:
+				finallinks.append(href[href.find('=')+1:])
 #print('These are dailyvideokeys finallinks' + str(finallinks))
 plexLnks = ''
 for l in finallinks:
